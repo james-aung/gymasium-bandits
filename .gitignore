@@ -90,3 +90,6 @@ ENV/
 
 # PyCharm Project Files
 .idea
+
+# Test files
+test.py
