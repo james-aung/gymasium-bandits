@@ -1,6 +1,8 @@
+from typing import Any, Dict
+
 import numpy as np
 import gymnasium as gym
-from gymnasium import spaces
+from gymnasium.spaces import Discrete
 from gymnasium.utils import seeding
 
 
@@ -30,21 +32,13 @@ class BanditEnv(gym.Env):
         self.r_dist = r_dist
 
         self.n_bandits = len(p_dist)
-        self.action_space = spaces.Discrete(self.n_bandits)
-        self.observation_space = spaces.Discrete(1)
-
-        self._seed()
-
-    def _seed(self, seed=None):
-        self.np_random, seed = seeding.np_random(seed)
-        return [seed]
+        self.action_space = Discrete(self.n_bandits)
+        self.observation_space = Discrete(1)
 
     def step(self, action):
         assert self.action_space.contains(action)
 
         reward = 0
-        terminated = True
-        truncated = False
 
         if np.random.uniform() < self.p_dist[action]:
             if not isinstance(self.r_dist[action], list):
@@ -52,11 +46,16 @@ class BanditEnv(gym.Env):
             else:
                 reward = np.random.normal(self.r_dist[action][0], self.r_dist[action][1])
 
-        # Adjust the return statement to include terminated and truncated
-        return 0, reward, terminated, truncated, {}
+        terminated = True
+        truncated = False
+        next_observation = 0 # Bandits always have the same state
 
-    def reset(self):
-        return 0
+        return next_observation, reward, terminated, truncated, {}
+
+    def reset(self, seed: int | None = None, options: Dict[str, Any] | None = None):
+        super().reset(seed=seed)
+        observation = 0 
+        return observation, {}
 
     def render(self, mode='human', close=False):
         pass
