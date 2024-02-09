@@ -21,5 +21,5 @@ environments = [['BanditTenArmedRandomFixed', 'v0'],
 for environment in environments:
     register(
         id='{}-{}'.format(environment[0], environment[1]),
-        entry_point='gym_bandits:{}'.format(environment[0]),
+        entry_point='gymnasium_bandits:{}'.format(environment[0]),
     )
