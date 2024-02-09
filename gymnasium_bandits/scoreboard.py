@@ -1,4 +1,4 @@
-from gymasium.scoreboard.registration import add_task, add_group
+from gymnasium.scoreboard.registration import add_task, add_group
 
 
 add_group(

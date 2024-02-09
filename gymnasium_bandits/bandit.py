@@ -1,7 +1,7 @@
 import numpy as np
 import gymnasium as gym
-from gymasium import spaces
-from gymasium.utils import seeding
+from gymnasium import spaces
+from gymnasium.utils import seeding
 
 
 class BanditEnv(gym.Env):
