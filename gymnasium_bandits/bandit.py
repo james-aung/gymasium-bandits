@@ -3,7 +3,6 @@ from typing import Any, Dict
 import numpy as np
 import gymnasium as gym
 from gymnasium.spaces import Discrete
-from gymnasium.utils import seeding
 
 
 class BanditEnv(gym.Env):
