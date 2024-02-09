@@ -1,7 +1,7 @@
 import numpy as np
-import gym
-from gym import spaces
-from gym.utils import seeding
+import gymnasium as gym
+from gymasium import spaces
+from gymasium.utils import seeding
 
 
 class BanditEnv(gym.Env):
@@ -43,7 +43,8 @@ class BanditEnv(gym.Env):
         assert self.action_space.contains(action)
 
         reward = 0
-        done = True
+        terminated = True
+        truncated = False
 
         if np.random.uniform() < self.p_dist[action]:
             if not isinstance(self.r_dist[action], list):
@@ -51,7 +52,8 @@ class BanditEnv(gym.Env):
             else:
                 reward = np.random.normal(self.r_dist[action][0], self.r_dist[action][1])
 
-        return 0, reward, done, {}
+        # Adjust the return statement to include terminated and truncated
+        return 0, reward, terminated, truncated, {}
 
     def reset(self):
         return 0
