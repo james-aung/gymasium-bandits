@@ -2,6 +2,8 @@
 
 Series of n-armed bandit environments from [gym-bandits](https://github.com/JKCooper2/gym-bandits) upgraded from Gym v21 to Gymnasium
 
+**All credit to [gym-bandits](https://github.com/JKCooper2/gym-bandits) for the original implementation.**
+
 Each env uses a different set of:
 * Probability Distributions - A list of probabilities of the likelihood that a particular bandit will pay out
 * Reward Distributions - A list of either rewards (if number) or means and standard deviations (if list) of the payout that bandit has
