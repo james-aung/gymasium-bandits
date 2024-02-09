@@ -1,6 +1,6 @@
 # Bandit Environments
 
-Series of n-armed bandit environments for the OpenAI Gym
+Series of n-armed bandit environments from [gym-bandits](https://github.com/JKCooper2/gym-bandits) upgraded from Gym v21 to Gymnasium
 
 Each env uses a different set of:
 * Probability Distributions - A list of probabilities of the likelihood that a particular bandit will pay out
@@ -26,20 +26,21 @@ your weights against the true values for plotting results of various algorithms
 
 ### Installation
 ```bash
-git clone git@github.com:JKCooper2/gym-bandits.git
-cd gym-bandits
+git clone git@github.com:james-aung/gymnasium-bandits.git
+cd gymnasium-bandits
 pip install .
 ```
 
 To install using `requirements.txt` or `environment.yml` call:
 
 ```
-git+https://github.com/JKCooper2/gym-bandits#egg=gym-bandits
+git+https://github.com/james-aung/gymasium-bandits
 ```
 
 
-In your gym environment
+In your gymnasium environment
 ```python
-import gym_bandits
+import gymnasium as gym
+import gymnasium_bandits
 env = gym.make("BanditTenArmedGaussian-v0") # Replace with relevant env
 ```
