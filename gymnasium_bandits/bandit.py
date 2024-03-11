@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 import numpy as np
 import gymnasium as gym
@@ -51,7 +51,7 @@ class BanditEnv(gym.Env):
 
         return next_observation, reward, terminated, truncated, {}
 
-    def reset(self, seed: int | None = None, options: Dict[str, Any] | None = None):
+    def reset(self, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None):
         super().reset(seed=seed)
         observation = 0 
         return observation, {}
